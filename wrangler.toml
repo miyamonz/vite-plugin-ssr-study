@@ -1,0 +1,7 @@
+main="./worker/index.ts"
+name = "vite-plugin-ssr-study"
+compatibility_date = "2023-04-13"
+send_metrics = false
+
+[site]
+bucket = "./dist/client"

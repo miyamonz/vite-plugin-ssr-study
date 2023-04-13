@@ -1,5 +1,4 @@
 import { PageContext } from "../../renderer/types";
-import fs from "fs/promises";
 
 type ExtractPageProps<T extends (...args: any[]) => any> = Awaited<
   ReturnType<T>
@@ -8,9 +7,7 @@ type ExtractPageProps<T extends (...args: any[]) => any> = Awaited<
 export type PageProps = ExtractPageProps<typeof onBeforeRender>;
 
 export async function onBeforeRender(pageContext: PageContext) {
-  //   console.log("onBeforeRender pageContext", pageContext);
-  const files = await fs.readdir("./");
-  const pageProps = { files };
+  const pageProps = { files: ["test"] };
 
   // We make `pageProps` available as `pageContext.pageProps`
   return {
