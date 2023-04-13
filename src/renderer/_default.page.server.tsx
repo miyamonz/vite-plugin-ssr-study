@@ -2,29 +2,31 @@
 export const passToClient = ["pageProps", "urlPathname"];
 
 import ReactDOMServer from "react-dom/server";
-import React from "react";
 import { PageShell } from "./PageShell";
 import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr/server";
 import logoUrl from "./logo.svg";
 import type { PageContextServer } from "./types";
+
+import { setPageContext } from "./usePageContext";
 
 export async function render(pageContext: PageContextServer) {
   const { Page, pageProps } = pageContext;
   // This render() hook only supports SSR, see https://vite-plugin-ssr.com/render-modes for how to modify render() to support SPA
   if (!Page)
     throw new Error("My render() hook expects pageContext.Page to be defined");
+
+  setPageContext(pageContext);
+
   const pageHtml = ReactDOMServer.renderToString(
-    <PageShell pageContext={pageContext}>
+    <PageShell>
       <Page {...pageProps} />
     </PageShell>
   );
 
   // See https://vite-plugin-ssr.com/head
   const { documentProps } = pageContext.exports;
-  const title = (documentProps && documentProps.title) || "Vite SSR app";
-  const desc =
-    (documentProps && documentProps.description) ||
-    "App using Vite + vite-plugin-ssr";
+  const title = documentProps?.title ?? "Vite SSR app";
+  const desc = documentProps?.description ?? "App using Vite + vite-plugin-ssr";
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">

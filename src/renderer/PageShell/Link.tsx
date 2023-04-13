@@ -1,12 +1,12 @@
-import React from "react";
-import { usePageContext } from "./usePageContext";
+import type { ReactNode } from "react";
+import { usePageContext } from "../usePageContext";
 
 export { Link };
 
 function Link(props: {
   href?: string;
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   const pageContext = usePageContext();
   const className = [
