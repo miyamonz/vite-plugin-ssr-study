@@ -1,65 +1,79 @@
 lockfileVersion: '6.0'
 
-dependencies:
-  compression:
-    specifier: 1.7.4
-    version: 1.7.4
-  cross-env:
-    specifier: 7.0.3
-    version: 7.0.3
-  express:
-    specifier: 4.18.2
-    version: 4.18.2
-  hono:
-    specifier: 3.1.5
-    version: 3.1.5
-  jotai:
-    specifier: 2.0.4
-    version: 2.0.4(react@18.2.0)
-  react:
-    specifier: 18.2.0
-    version: 18.2.0
-  react-dom:
-    specifier: 18.2.0
-    version: 18.2.0(react@18.2.0)
-  sirv:
-    specifier: 2.0.2
-    version: 2.0.2
-  tsx:
-    specifier: 3.12.6
-    version: 3.12.6
-  vite-plugin-ssr:
-    specifier: 0.4.112
-    version: 0.4.112(vite@4.2.1)
+importers:
 
-devDependencies:
-  '@types/compression':
-    specifier: 1.7.2
-    version: 1.7.2
-  '@types/express':
-    specifier: 4.17.17
-    version: 4.17.17
-  '@types/node':
-    specifier: 18.15.11
-    version: 18.15.11
-  '@types/react':
-    specifier: 18.0.35
-    version: 18.0.35
-  '@types/react-dom':
-    specifier: 18.0.11
-    version: 18.0.11
-  '@vitejs/plugin-react':
-    specifier: 3.1.0
-    version: 3.1.0(vite@4.2.1)
-  typescript:
-    specifier: 5.0.4
-    version: 5.0.4
-  vite:
-    specifier: 4.2.1
-    version: 4.2.1(@types/node@18.15.11)
-  wrangler:
-    specifier: 2.15.0
-    version: 2.15.0
+  .:
+    dependencies:
+      compression:
+        specifier: 1.7.4
+        version: 1.7.4
+      cross-env:
+        specifier: 7.0.3
+        version: 7.0.3
+      express:
+        specifier: 4.18.2
+        version: 4.18.2
+      hono:
+        specifier: 3.1.5
+        version: 3.1.5
+      jotai:
+        specifier: 2.0.4
+        version: 2.0.4(react@18.2.0)
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+      sirv:
+        specifier: 2.0.2
+        version: 2.0.2
+      tsx:
+        specifier: 3.12.6
+        version: 3.12.6
+      vite-plugin-ssr:
+        specifier: 0.4.112
+        version: 0.4.112(vite@4.2.1)
+    devDependencies:
+      '@types/compression':
+        specifier: 1.7.2
+        version: 1.7.2
+      '@types/express':
+        specifier: 4.17.17
+        version: 4.17.17
+      '@types/node':
+        specifier: 18.15.11
+        version: 18.15.11
+      '@types/react':
+        specifier: 18.0.35
+        version: 18.0.35
+      '@types/react-dom':
+        specifier: 18.0.11
+        version: 18.0.11
+      '@vitejs/plugin-react':
+        specifier: 3.1.0
+        version: 3.1.0(vite@4.2.1)
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
+      vite:
+        specifier: 4.2.1
+        version: 4.2.1(@types/node@18.15.11)
+      wrangler:
+        specifier: 2.15.0
+        version: 2.15.0
+
+  worker:
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: 4.20230404.0
+        version: 4.20230404.0
+      hono:
+        specifier: 3.1.5
+        version: 3.1.5
+      wrangler:
+        specifier: 2.15.0
+        version: 2.15.0
 
 packages:
 
@@ -309,6 +323,10 @@ packages:
     resolution: {integrity: sha512-MVbXLbTcAotOPUj0pAMhVtJ+3/kFkwJqc5qNOleOZTv6QkZZABDMS21dSrSlVswEHwrpWC03e4fWytjqKvuE2A==}
     dependencies:
       mime: 3.0.0
+    dev: true
+
+  /@cloudflare/workers-types@4.20230404.0:
+    resolution: {integrity: sha512-fG3oaJX1icfsGV74nhx1+AC6opvZsGqnpx6FvrcVqQaBmCNkjKNqDRFrpasXWFiOIvysBXHKQAzsAJkBZgnM+A==}
     dev: true
 
   /@esbuild-kit/cjs-loader@2.4.2:
@@ -1601,7 +1619,6 @@ packages:
   /hono@3.1.5:
     resolution: {integrity: sha512-ypFLhNYoXXtep4I9zJt3VpB5/Ze3p9BLU4dpnAp7fxHOmSg8lu/Wwjs5sTJnb2GwVdfjbt9KFB9alA4Zt/P0jw==}
     engines: {node: '>=16.0.0'}
-    dev: false
 
   /html-rewriter-wasm@0.4.1:
     resolution: {integrity: sha512-lNovG8CMCCmcVB1Q7xggMSf7tqPCijZXaH4gL6iE8BFghdQCbaY5Met9i1x2Ex8m/cZHDUtXK9H6/znKamRP8Q==}
