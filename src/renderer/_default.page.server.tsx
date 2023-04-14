@@ -1,13 +1,15 @@
 // See https://vite-plugin-ssr.com/data-fetching
 export const passToClient = ["pageProps", "urlPathname"];
 
-import ReactDOMServer from "react-dom/server";
+// import { renderToString } from "react-dom/server";
 import { PageShell } from "./PageShell";
 import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr/server";
 import logoUrl from "./logo.svg";
 import type { PageContextServer } from "./types";
 
 import { setPageContext } from "./usePageContext";
+import renderWithChakra from "./chakra/server";
+import { ChakraProvider } from "@chakra-ui/react";
 
 export async function render(pageContext: PageContextServer) {
   const { Page, pageProps } = pageContext;
@@ -17,10 +19,12 @@ export async function render(pageContext: PageContextServer) {
 
   setPageContext(pageContext);
 
-  const pageHtml = ReactDOMServer.renderToString(
-    <PageShell>
-      <Page {...pageProps} />
-    </PageShell>
+  const pageHtml = renderWithChakra(
+    <ChakraProvider>
+      <PageShell>
+        <Page {...pageProps} />
+      </PageShell>
+    </ChakraProvider>
   );
 
   // See https://vite-plugin-ssr.com/head

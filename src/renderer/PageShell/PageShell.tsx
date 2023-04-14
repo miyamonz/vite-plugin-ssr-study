@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import logo from "../logo.svg";
-import "./PageShell.css";
+// import "./PageShell.css";
 import { Link } from "./Link";
 
 export { PageShell };
@@ -16,6 +16,9 @@ function PageShell({ children }: { children: React.ReactNode }) {
           </Link>
           <Link className="navitem" href="/about">
             About
+          </Link>
+          <Link className="navitem" href="/chakra">
+            Chakra
           </Link>
         </Sidebar>
         <Content>{children}</Content>

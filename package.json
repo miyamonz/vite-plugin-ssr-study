@@ -8,9 +8,15 @@
     "server:prod": "cross-env NODE_ENV=production tsx ./server/index.ts"
   },
   "dependencies": {
+    "@chakra-ui/react": "2.5.5",
+    "@emotion/cache": "11.10.7",
+    "@emotion/react": "11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "11.10.6",
     "compression": "1.7.4",
     "cross-env": "7.0.3",
     "express": "4.18.2",
+    "framer-motion": "6.5.1",
     "hono": "3.1.5",
     "jotai": "2.0.4",
     "react": "18.2.0",

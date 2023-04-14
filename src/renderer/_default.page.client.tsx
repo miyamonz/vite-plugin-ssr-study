@@ -1,8 +1,13 @@
-import { hydrateRoot } from "react-dom/client";
+import { Root, createRoot, hydrateRoot } from "react-dom/client";
 import { PageShell } from "./PageShell";
 import type { PageContextClient } from "./types";
 import { setPageContext } from "./usePageContext";
+import { ClientCacheProvider } from "./chakra/client";
+import { ChakraProvider } from "@chakra-ui/react";
 
+export const clientRouting = true;
+
+let root: Root;
 // This render() hook only supports SSR, see https://vite-plugin-ssr.com/render-modes for how to modify render() to support SPA
 export async function render(pageContext: PageContextClient) {
   const { Page, pageProps } = pageContext;
@@ -12,13 +17,23 @@ export async function render(pageContext: PageContextClient) {
     );
 
   setPageContext(pageContext);
-
-  hydrateRoot(
-    document.getElementById("page-view")!,
-    <PageShell>
-      <Page {...pageProps} />
-    </PageShell>
+  const container = document.getElementById("page-view")!;
+  const page = (
+    <ClientCacheProvider>
+      <ChakraProvider>
+        <PageShell>
+          <Page {...pageProps} />
+        </PageShell>
+      </ChakraProvider>
+    </ClientCacheProvider>
   );
+
+  if (pageContext.isHydration) {
+    root = hydrateRoot(container, page);
+  } else {
+    if (!root) root = createRoot(container);
+    root.render(page);
+  }
 }
 
 /* To enable Client-side Routing:
