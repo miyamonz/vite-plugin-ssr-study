@@ -11,3 +11,4 @@ todo
 
 - [ ] worker binding
 - [ ] hot reload with worker
+- [ ] split client as monorepo
