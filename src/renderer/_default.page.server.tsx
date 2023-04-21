@@ -2,7 +2,6 @@
 export const passToClient = ["pageProps", "urlPathname"];
 
 // import { renderToString } from "react-dom/server";
-import { Layout } from "./Layout";
 import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr/server";
 import logoUrl from "./logo.svg";
 import type { PageContextServer } from "./types";
@@ -10,9 +9,10 @@ import type { PageContextServer } from "./types";
 import { setPageContext } from "./usePageContext";
 import renderWithChakra from "./chakra/server";
 import { ChakraProvider } from "@chakra-ui/react";
+import { App } from "./App";
 
 export async function render(pageContext: PageContextServer) {
-  const { Page, pageProps } = pageContext;
+  const { Page } = pageContext;
   // This render() hook only supports SSR, see https://vite-plugin-ssr.com/render-modes for how to modify render() to support SPA
   if (!Page)
     throw new Error("My render() hook expects pageContext.Page to be defined");
@@ -21,9 +21,7 @@ export async function render(pageContext: PageContextServer) {
 
   const pageHtml = renderWithChakra(
     <ChakraProvider>
-      <Layout>
-        <Page {...pageProps} />
-      </Layout>
+      <App />
     </ChakraProvider>
   );
 

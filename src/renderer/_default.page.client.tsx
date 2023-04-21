@@ -1,17 +1,17 @@
 import { Root, createRoot, hydrateRoot } from "react-dom/client";
-import { Layout } from "./Layout";
 import type { PageContextClient } from "./types";
 import { setPageContext } from "./usePageContext";
 import { ClientCacheProvider } from "./chakra/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import "./index.css";
+import { App } from "./App";
 
 export const clientRouting = true;
 
 let root: Root;
 // This render() hook only supports SSR, see https://vite-plugin-ssr.com/render-modes for how to modify render() to support SPA
 export async function render(pageContext: PageContextClient) {
-  const { Page, pageProps } = pageContext;
+  const { Page } = pageContext;
   if (!Page)
     throw new Error(
       "Client-side render() hook expects pageContext.Page to be defined"
@@ -22,9 +22,7 @@ export async function render(pageContext: PageContextClient) {
   const page = (
     <ClientCacheProvider>
       <ChakraProvider>
-        <Layout>
-          <Page {...pageProps} />
-        </Layout>
+        <App />
       </ChakraProvider>
     </ClientCacheProvider>
   );
