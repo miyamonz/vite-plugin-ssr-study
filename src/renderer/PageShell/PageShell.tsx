@@ -1,6 +1,5 @@
 import { StrictMode } from "react";
 import logo from "../logo.svg";
-// import "./PageShell.css";
 import { Link } from "./Link";
 
 export { PageShell };

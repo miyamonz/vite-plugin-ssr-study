@@ -4,6 +4,7 @@ import type { PageContextClient } from "./types";
 import { setPageContext } from "./usePageContext";
 import { ClientCacheProvider } from "./chakra/client";
 import { ChakraProvider } from "@chakra-ui/react";
+import "./index.css";
 
 export const clientRouting = true;
 
