@@ -1,5 +1,5 @@
 import { Root, createRoot, hydrateRoot } from "react-dom/client";
-import { PageShell } from "./PageShell";
+import { Layout } from "./Layout";
 import type { PageContextClient } from "./types";
 import { setPageContext } from "./usePageContext";
 import { ClientCacheProvider } from "./chakra/client";
@@ -22,9 +22,9 @@ export async function render(pageContext: PageContextClient) {
   const page = (
     <ClientCacheProvider>
       <ChakraProvider>
-        <PageShell>
+        <Layout>
           <Page {...pageProps} />
-        </PageShell>
+        </Layout>
       </ChakraProvider>
     </ClientCacheProvider>
   );

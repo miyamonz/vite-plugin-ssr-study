@@ -2,7 +2,7 @@
 export const passToClient = ["pageProps", "urlPathname"];
 
 // import { renderToString } from "react-dom/server";
-import { PageShell } from "./PageShell";
+import { Layout } from "./Layout";
 import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr/server";
 import logoUrl from "./logo.svg";
 import type { PageContextServer } from "./types";
@@ -21,9 +21,9 @@ export async function render(pageContext: PageContextServer) {
 
   const pageHtml = renderWithChakra(
     <ChakraProvider>
-      <PageShell>
+      <Layout>
         <Page {...pageProps} />
-      </PageShell>
+      </Layout>
     </ChakraProvider>
   );
 

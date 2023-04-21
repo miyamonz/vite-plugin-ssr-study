@@ -2,12 +2,10 @@ import { StrictMode } from "react";
 import logo from "../logo.svg";
 import { Link } from "./Link";
 
-export { PageShell };
-
-function PageShell({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <StrictMode>
-      <Layout>
+      <Container>
         <Sidebar>
           <Logo />
           <Link className="navitem" href="/">
@@ -21,12 +19,12 @@ function PageShell({ children }: { children: React.ReactNode }) {
           </Link>
         </Sidebar>
         <Content>{children}</Content>
-      </Layout>
+      </Container>
     </StrictMode>
   );
 }
 
-function Layout({ children }: { children: React.ReactNode }) {
+function Container({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
